@@ -12,6 +12,7 @@ class Personas extends BaseDomain implements \JsonSerializable{
     private $Apellido2;
     private $Telefono;
     private $Correo;
+    private $TelefonoFijo;
 
     //constructors
     public function __construct() {
@@ -23,7 +24,7 @@ class Personas extends BaseDomain implements \JsonSerializable{
         return $instance;
     }
 
-    public static function createPersonas($idPersona, $Nombre, $Apellido1, $Apellido2, $Telefono, $Correo) {
+    public static function createPersonas($idPersona, $Nombre, $Apellido1, $Apellido2, $Telefono, $Correo, $TelefonoFijo) {
         $instance = new self();
         $instance->idPersona        = $idPersona;
         $instance->Nombre           = $Nombre;
@@ -31,6 +32,7 @@ class Personas extends BaseDomain implements \JsonSerializable{
         $instance->Apellido2        = $Apellido2;
         $instance->Telefono         = $Telefono;
         $instance->Correo             = $Correo;
+        $instance->TelefonoFijo = $TelefonoFijo;
         return $instance;
     }
 
@@ -95,8 +97,18 @@ class Personas extends BaseDomain implements \JsonSerializable{
     function setCorreo($Correo) {
         $this->Correo = $Correo;
     }
-
     
+    /****************************************************************************/
+
+    function getTelefonoFijo() {
+        return $this->TelefonoFijo;
+    }
+
+    function setTelefonoFijo($TelefonoFijo) {
+        $this->TelefonoFijo = $TelefonoFijo;
+    }
+
+        
     /****************************************************************************/
     //Convertir el obj a JSON
     /****************************************************************************/

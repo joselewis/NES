@@ -37,18 +37,21 @@ function addOrUpdatePersonas() {
             url: '../backend/agenda/controller/personasController.php', 
             data: {
                 quequiereHacerelsuaurio:            "registrarse",
-                idPerspna:                                  $("#txtidPerspna").val(),
-                Nombre:                                     $("#txtnombre").val(),
-                Apellido1:                                   $("#txtapellido1").val(),
-                Apellido2:                                   $("#txtapellido2").val(),
-                Telefono:                                     $("#txttelefono").val(),
-                Correo:                                        $("#txtcorreo").val(),
-                Lat:                                              marker.position.lat().toFixed(6),
-                Long:                                           marker.position.lng().toFixed(6),
-                Local:                                          $("#txtlocal").val(),
-                Direccion:                                   $("#txtdireccion").val(),
-                Cedula_Juridica:                       $("#txtcedjuridica").val(),
-                Provincia:                       $("#txtprovincia").val()
+                idPersona:                            $("#txtidPersona").val(),
+                Nombre:                               $("#txtnombre").val(),
+                Apellido1:                             $("#txtapellido1").val(),
+                Apellido2:                             $("#txtapellido2").val(),
+                Telefono:                               $("#txttelefono").val(),
+                Correo:                                  $("#txtcorreo").val(),
+                TelefonoFijo:                          $("#txttelefonoFijo").val(),
+                
+                idLocal:                                  $("#txtlocal").val(),
+                Latitud:                                   marker.position.lat().toFixed(6),
+                Longitud:                                marker.position.lng().toFixed(6),
+                Cedula_Juridica:                  $("#txtcedjuridica").val(),
+                Nombre_Local:                       $("#txtcedjuridica").val(),
+                //Direccion:                              $("#txtdireccion").val(),
+                 //Provincia:                               $("#txtprovincia").val()
             },
             error: function () { //si existe un error en la respuesta del ajax
                 swal("Error", "Se presento un error al enviar la informacion", "error");

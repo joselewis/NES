@@ -6,7 +6,29 @@
             <meta name="viewport" content="width=device-width, initial-scale=1.0">
             <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
             <link href="public_html/css/CSS.css" rel="stylesheet" type="text/css"/>
+            <script src="public_html/js/personasFunctions.js" type="text/javascript"></script>
+            <script src="public_html/js/jquery3_5_1.min.js" type="text/javascript"></script>
+            <script src="public_html/js/utils.js" type="text/javascript"></script>
+            <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+            
+            <script src="public_html/js/lib/sweetAlert2/dist/sweetalert2.all.min.js" type="text/javascript"></script>
+            <link href="public_html/js/lib/sweetAlert2/dist/sweetalert2.min.css" rel="stylesheet" type="text/css"/>
         
+            
+            <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+        <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js" integrity="sha384-OgVRvuATP1z7JjHLkuOU7Xw704+h835Lr+6QL9UvYjZE3Ipu6Tp75j7Bh/kR0JKI" crossorigin="anonymous"></script>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+        
+        <link href="../CSS/Estilos.css" rel="stylesheet" type="text/css"/>
+        <script src="public_html/js/personasFunctions.js" type="text/javascript"></script>
+
+        <script src="public_html/js/lib/sweetAlert2/dist/sweetalert2.all.min.js" type="text/javascript"></script>
+        <link href="public_html/js/lib/sweetAlert2/dist/sweetalert2.min.css" rel="stylesheet" type="text/css"/>
+            
+            
+            
+            
         </head>
         <body>
             <nav class="navbar navbar-dark bg-dark">
@@ -41,7 +63,7 @@
                           </div>
                           <div class="form-group col-md-2" id="grouptelefono">
                             <label for="txttelefonofijo">Teléfono Fijo</label>
-                            <input class="form-control" id="txttelefonofijo" placeholder="">
+                            <input class="form-control" id="txttelefonoFijo" placeholder="">
                           </div>
                   </div>
                     
@@ -74,14 +96,11 @@
                                 </select>
                         </div>
                     </div>
-                    <div class="form-group">
-                      <div class="form-check">
-                        <input class="form-check-input" type="checkbox" id="gridCheck">
-                        <label class="form-check-label" for="gridCheck">
-                          Acepto los términos y condiciones
-                        </label>
-                      </div>
-                    </div>
+                      <div id="coordenadas"></div>
+                                    <div id="map-container" class="z-depth-1" style="height: 500px; width: 600px;"></div>
+                           <script
+                                    src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDrWBUM4BClWO4HXgDsy8l1tbgpWlxT_xc&callback=mostrarMapa">
+                           </script>
                     <button type="submit" class="btn btn-primary" id="enviar">Registrar Local</button>
                   </form>
        </body>

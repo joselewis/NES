@@ -15,7 +15,7 @@ switch ($config_AMBIENTE_BD) {
         $labAdodb = newAdoConnection($driver);
         $labAdodb->setCharset('utf8');
         $labAdodb->setConnectionParameter('CharacterSet', 'WE8ISO8859P15');
-        $labAdodb->Connect("localhost", "root", "Programacion2uia", "NES");
+        $labAdodb->Connect("localhost", "root", "Programacion2uia", "NESTLE");
        
         break;
     case "produccion":

@@ -2,8 +2,8 @@
 
 require_once("../bo/personasBo.php");
 require_once("../domain/personas.php");
-require_once("../bo/UsuarioBo.php");
-require_once("../domain/Usuario.php");
+require_once("../bo/localBo.php");
+require_once("../domain/locales.php");
 
 
 //************************************************************
@@ -16,8 +16,8 @@ if (filter_input(INPUT_POST, 'quequiereHacerelsuaurio') != null) {
     try {
         $myPersonasBo = new PersonasBo();
         $myPersonas = Personas::createNullPersonas();
-        $myUsuariosBo = new UsuarioBo();
-        $myUsuarios= Usuario::createNullUsuario();
+        $myLocalBo = new LocalBo();
+        $myLocal= Locales::createNullLocales();
 
         //***********************************************************
         //choose the action
@@ -25,26 +25,31 @@ if (filter_input(INPUT_POST, 'quequiereHacerelsuaurio') != null) {
 
         if ($action === "registrarse" or $action === "update_Usuario") {
             //se valida que los parametros hayan sido enviados por post
-            if ((filter_input(INPUT_POST, 'idPersona') != null) && (filter_input(INPUT_POST, 'nombre') != null) && (filter_input(INPUT_POST, 'apellido1') != null) && (filter_input(INPUT_POST, 'apellido2') != null) && (filter_input(INPUT_POST, 'Telefono') != null) && (filter_input(INPUT_POST, 'Correo') != null)) {
+            if ((filter_input(INPUT_POST, 'idPersona') != null) && (filter_input(INPUT_POST, 'Nombre') != null) && (filter_input(INPUT_POST, 'Apellido1') != null) && (filter_input(INPUT_POST, 'Apellido2') != null) && (filter_input(INPUT_POST, 'Telefono') != null) && (filter_input(INPUT_POST, 'Correo') != null) && (filter_input(INPUT_POST, 'TelefonoFijo') != null)) {
                 //$personasguardar = Personas::createPersonas();
+                
                 $myPersonas->setidPersona(filter_input(INPUT_POST, 'idPersona'));
-                $myPersonas->setnombre(filter_input(INPUT_POST, 'nombre'));
-                $myPersonas->setapellido1(filter_input(INPUT_POST, 'apellido1'));
-                $myPersonas->setapellido2(filter_input(INPUT_POST, 'apellido2'));
+                $myPersonas->setnombre(filter_input(INPUT_POST, 'Nombre'));
+                $myPersonas->setapellido1(filter_input(INPUT_POST, 'Apellido1'));
+                $myPersonas->setapellido2(filter_input(INPUT_POST, 'Apellido2'));
                 $myPersonas->setTelefono(filter_input(INPUT_POST, 'Telefono'));
                 $myPersonas->setCorreo(filter_input(INPUT_POST, 'Correo'));
-                $myUsuarios->setidUsuario(filter_input(INPUT_POST, 'idUsuario'));
-                $myUsuarios->setidCedula(filter_input(INPUT_POST,'idPersona'));
-                $myUsuarios->setLat(filter_input(INPUT_POST,'Lat'));
-                $myUsuarios->setLong(filter_input(INPUT_POST,'Long'));
+                $myPersonas->setTelefono_Fijo(filter_input(INPUT_POST, 'Telefono_Fijo'));
+                
+                $myLocal->setidCodigo_Cliente(filter_input(INPUT_POST, 'idCodigo_Cliente'));
+                $myLocal->setCedula_Juridica(filter_input(INPUT_POST,'Cedula_Juridica'));
+                $myLocal->setLatitud(filter_input(INPUT_POST,'Latitud'));
+                $myLocal->setLongitud(filter_input(INPUT_POST,'Longitud'));
+                $myLocal->setPersona_idPersona(filter_input(INPUT_POST,'Persona_idPersona'));
+                
                 if ($action == "registrarse") {
                     $myPersonasBo->add($myPersonas);
-                    $myUsuariosBo -> add($myUsuarios);
+                    $myLocalBo -> add($myLocal);
                     echo('M~Registro Incluido Correctamente');
                 }
                 if ($action == "update_personas") {
                     $myPersonasBo->update($myPersonas);
-                     $myUsuariosBo -> add($myUsuarios);
+                     $myLocalBo -> add($myLocal);
                     echo('M~Registro Modificado Correctamente');
                 }
             }

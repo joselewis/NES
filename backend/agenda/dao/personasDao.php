@@ -24,14 +24,15 @@ class PersonasDao {
 
         global $labAdodb;
         try {
-            $sql = sprintf("insert into Persona (idPersona, Nombre, Apellido1, Apellido2, Telefono, Correo) 
-                                          values (%s,%s,%s,%s,%s,%s)",
+            $sql = sprintf("insert into Persona (idPersona, Nombre, Apellido1, Apellido2, Telefono, Correo, Telefono_Fijo) 
+                                          values (%s,%s,%s,%s,%s,%s,%s)",
                     $labAdodb->Param("idPersona"),
                     $labAdodb->Param("Nombre"),
                     $labAdodb->Param("Apellido1"),
                     $labAdodb->Param("Apellido2"),
                     $labAdodb->Param("Telefono"),
-                    $labAdodb->Param("Correo"));
+                    $labAdodb->Param("Correo"),
+                    $labAdodb->Param("TelefonoFijo"));
             $sqlParam = $labAdodb->Prepare($sql);
 
             $valores = array();
@@ -42,6 +43,7 @@ class PersonasDao {
             $valores["Apellido2"]       = $personas->getApellido2();
             $valores["Telefono"]   = $personas->getTelefono();
             $valores["Correo"]            = $personas->getCorreo();
+            $valores["TelefonoFijo"]            = $personas->getTelefonoFijo();
 
             $labAdodb->Execute($sqlParam, $valores) or die($labAdodb->ErrorMsg());
         } catch (Exception $e) {
@@ -87,13 +89,15 @@ class PersonasDao {
                                                 Apellido1 = %s, 
                                                 Apellido2 = %s, 
                                                 Telefono = %s, 
-                                                Correo = %s, 
+                                                Correo = %s,
+                                                TelefonoFijo = %s,
                             where idPersona = %s",
                     $labAdodb->Param("Nombre"),
                     $labAdodb->Param("Apellido1"),
                     $labAdodb->Param("Apellido2"),
                     $labAdodb->Param("Telefono"),
                     $labAdodb->Param("Correo"),
+                    $labAdodb->Param("TelefonoFijo"),
                     $labAdodb->Param("idPersona"));
             $sqlParam = $labAdodb->Prepare($sql);
 
@@ -104,6 +108,7 @@ class PersonasDao {
             $valores["Apellido2"]       = $personas->getApellido2();
             $valores["Telefono"]   = $personas->geTelefono();
             $valores["Correo"]            = $personas->getCorreo();
+             $valores["TelefonoFijo"]            = $personas->getTelefonoFijo();
             $valores["idPersona"]       = $personas->getidPersona();
             $labAdodb->Execute($sqlParam, $valores) or die($labAdodb->ErrorMsg());
         } catch (Exception $e) {
@@ -160,6 +165,7 @@ class PersonasDao {
                 $returnPersonas->setApellido2($resultSql->Fields("Apellido2"));
                 $returnPersonas->setTelefono($resultSql->Fields("Telefono"));
                 $returnPersonas->setCorreo($resultSql->Fields("Correo"));
+                $returnPersonas->setTelefonoFijo($resultSql->Fields("TelefonoFijo"));
             }
         } catch (Exception $e) {
             throw new Exception('No se pudo consultar el registro (Error generado en el metodo searchById de la clase PersonasDao), error:'.$e->getMessage());
